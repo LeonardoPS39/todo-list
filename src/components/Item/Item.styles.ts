@@ -2,16 +2,22 @@ import styled from "styled-components";
 
 export const Content = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 12px 0;
-  /* justify-content: center; */
+  margin-inline: 16px;
+`;
+
+export const MarkContent = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const MarkButton = styled.input`
   -webkit-appearance: none;
   appearance: none;
   background-color: #fff;
-  margin: 0 6px;
+  margin-right: 6px;
   font: inherit;
   color: currentColor;
   width: 1.15em;
@@ -28,7 +34,7 @@ export const MarkButton = styled.input`
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em red;
+    box-shadow: inset 1em 1em #000;
     background-color: CanvasText;
   }
 
@@ -39,4 +45,6 @@ export const MarkButton = styled.input`
 
 export const TaskItem = styled.label`
   color: #FFF;
+
+  user-select: none;
 `;

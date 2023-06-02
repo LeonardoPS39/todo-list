@@ -1,10 +1,21 @@
-import { Content, MarkButton, TaskItem } from "./Item.styles";
+import { Button } from "../../styles";
+import { Content, MarkContent, MarkButton, TaskItem } from "./Item.styles";
 
-const Item = ({ContentList, id, name}: any) => {
+interface IProps extends React.PropsWithChildren {
+  id: string;
+  removeItem: () => void
+}
+
+const Item = ({ id, children, removeItem }: IProps) => {
   return (
     <Content>
-      <MarkButton type="radio" id={id} name={name}></MarkButton>
-      <TaskItem htmlFor={id} >{ContentList}</TaskItem>
+      <MarkContent>
+        <MarkButton id={id} type="checkbox" />
+        <TaskItem htmlFor={id}>{children}</TaskItem>
+      </MarkContent>
+      <Button onClick={removeItem}>
+        Remove
+      </Button>
     </Content>
   )
 }
