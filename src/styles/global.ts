@@ -1,10 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Content = styled.div`
-  margin-top: 12px;
-`;
+export const Content = styled.div``;
 
-export const ButtonItem = styled.button`
+export const Button = styled.button`
   color: #FFF;
   border: 1px solid #FFF;
   border-radius: 20px;

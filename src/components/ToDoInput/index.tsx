@@ -1,31 +1,22 @@
-import Button from "../Button";
-import Input from "../Input";
-import { Content } from "./ToDoInput.styles";
-import { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+import React, { useState } from 'react'
+import { Content, Input } from "./ToDoInput.styles";
+import { Button } from '../../styles';
 
-const ToDoInput = () => {
+interface IProps extends React.PropsWithChildren {
+  onSubmit: (value: string) => void
+}
 
-  const [inputValue, setInputValue] = useState("");
-
-  const addCookies = () => {
-    Cookies.set("inputValue", inputValue);
-    console.log(inputValue)
-  }
-
-  useEffect(() => {
-    const getInputValue = () => {
-      const input = document.getElementById('inputOnList') as HTMLInputElement;
-      setInputValue(input.value);
-    }
-
-    document.querySelector("#addButton")?.addEventListener("click", () => getInputValue);
-  }, []);
-
+const ToDoInput = ({ onSubmit }: IProps) => {
+  const [value, setValue] = useState<string>('');
   return (
     <Content>
-      <Input />
-      <Button onClick={addCookies} />
+      <Input 
+        value={value} 
+        onChange={(event) => setValue(event.target.value)} 
+      />
+      <Button onClick={() => onSubmit(value)}>
+        Submit
+      </Button>
     </Content>
   )
 }
